@@ -1,0 +1,133 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: var(--radius);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-walnut: var(--walnut);
+  --color-ivory: var(--ivory);
+  --color-stone: var(--stone);
+}
+
+:root {
+  --radius: 2px;
+  --ivory: oklch(0.97 0.008 85);
+  --walnut: oklch(0.26 0.02 45);
+  --gold: oklch(0.7 0.06 75);
+  --stone: oklch(0.92 0.014 80);
+  --background: var(--ivory);
+  --foreground: var(--walnut);
+  --card: oklch(0.95 0.012 82);
+  --card-foreground: var(--walnut);
+  --popover: var(--ivory);
+  --popover-foreground: var(--walnut);
+  --primary: var(--walnut);
+  --primary-foreground: var(--ivory);
+  --secondary: var(--stone);
+  --secondary-foreground: var(--walnut);
+  --muted: var(--stone);
+  --muted-foreground: oklch(0.5 0.02 60);
+  --accent: var(--gold);
+  --accent-foreground: var(--walnut);
+  --destructive: oklch(0.55 0.18 28);
+  --destructive-foreground: var(--ivory);
+  --border: oklch(0.85 0.018 75);
+  --input: oklch(0.82 0.02 75);
+  --ring: var(--gold);
+  --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
+  --scrim: linear-gradient(180deg, oklch(0.18 0.015 45 / 0.35), oklch(0.18 0.015 45 / 0.75));
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  section[id] { scroll-margin-top: 80px; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+}
+
+@utility scrim {
+  background: var(--scrim);
+}
+
+@utility btn-lux {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.6rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  transition: background-color 0.4s var(--ease-lux), color 0.4s var(--ease-lux), border-color 0.4s var(--ease-lux);
+  & svg { transition: transform 0.4s var(--ease-lux); }
+  &:hover svg { transform: translateX(4px); }
+  &:active { transform: translateY(1px); }
+  &:disabled { opacity: 0.5; pointer-events: none; }
+}
+
+@utility nav-link {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -4px;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s var(--ease-lux);
+  }
+  &:hover::after { transform: scaleX(1); transform-origin: left; }
+}
