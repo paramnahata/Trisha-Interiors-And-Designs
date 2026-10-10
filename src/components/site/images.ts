@@ -1,19 +1,11 @@
-import i2 from "@/assets/interior-2.png.asset.json";
-import i3 from "@/assets/interior-3.png.asset.json";
-import i4 from "@/assets/interior-4.png.asset.json";
-import i5 from "@/assets/interior-5.png.asset.json";
-import i6 from "@/assets/interior-6.png.asset.json";
-import i7 from "@/assets/interior-7.png.asset.json";
-import i8 from "@/assets/interior-8.png.asset.json";
-
 export const IMG = {
-  hallwayTv: i2.url,
-  livingSofa: i3.url,
-  vanity: i4.url,
-  bedroom: i5.url,
-  tvWall: i6.url,
-  kiosk: i7.url,
-  kioskRender: i8.url,
+  hallwayTv: "/images/interior-2.png",
+  livingSofa: "/images/interior-3.png",
+  vanity: "/images/interior-4.png",
+  bedroom: "/images/interior-5.png",
+  tvWall: "/images/interior-6.png",
+  kiosk: "/images/interior-7.png",
+  kioskRender: "/images/interior-8.png",
 };
 
 export type Category = "Residential" | "Living Spaces" | "Kitchens & Storage" | "Commercial";
